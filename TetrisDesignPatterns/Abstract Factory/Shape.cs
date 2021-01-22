@@ -16,6 +16,8 @@ namespace TetrisDesignPatterns.Abstract_Factory
         Brush getColor();
         Cell getLowestCell();
         Cell getHighestCell();
+        void findLowestCell();
+        void findHighestCell();
         void setPos(int pos);
         int getPos();
         void accept(MoveLeft MoveLeft);

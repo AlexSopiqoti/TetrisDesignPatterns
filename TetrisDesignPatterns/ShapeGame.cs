@@ -22,6 +22,8 @@ namespace TetrisDesignPatterns
         AbstractFactory shapeFactory;
         Shape shape;
 
+        int score = 0;
+
         Board board;        
         List<Shape> shapesInTheBottom;
 
@@ -41,7 +43,7 @@ namespace TetrisDesignPatterns
         {            
             board = new Board();
             shapeFactory = FactoryProducer.getFactory();
-            shape = shapeFactory.getShape(4);
+            shape = shapeFactory.getShape(3);
             shapesInTheBottom = new List<Shape>();
             timerAni.Enabled = false;
             if (context.getState() == gameReset)
@@ -88,7 +90,7 @@ namespace TetrisDesignPatterns
             if (shape.getLowestCell().Y > 18) 
             {
                 shapesInTheBottom.Add(shape);
-                shape = shapeFactory.getShape(rnd.Next(1, 6));
+                shape = shapeFactory.getShape(3);
             }
             else if(board.board[shape.getLowestCell().X, shape.getLowestCell().Y + 1].type == Cell.CellType.Busy)
             {                
@@ -101,7 +103,7 @@ namespace TetrisDesignPatterns
                 if (board.board[cell.X, cell.Y + 1].type == Cell.CellType.Busy)
                 {
                     shapesInTheBottom.Add(shape);
-                    shape = shapeFactory.getShape(rnd.Next(1, 6));
+                    shape = shapeFactory.getShape(3);
                     break;
                 }
             }
@@ -114,8 +116,29 @@ namespace TetrisDesignPatterns
                         gameOver.doAction(context, timerAni, labelState);
                     }
                 }
+
             }
+            int row = 9;   //check fourth row
+            bool isFilled = true;
+            for (var col = 0; col < 20; col++)
+            {
+                if (board.board[row, col].type != Cell.CellType.Busy)
+                {
+                    isFilled = false;
+                }
+            }
+            if (isFilled)
+            {
+                Console.WriteLine("WORKS");
+            }
+
+
             pictureBox1.Invalidate();
+        }
+
+        public void checkForLines()
+        {
+            
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -142,15 +165,15 @@ namespace TetrisDesignPatterns
 
         private void buttonStart_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == 'd')
+            if(e.KeyChar == 'd' && canMoveRight(shape))
             {
                 shape.accept(new Visitor.MoveRight());
             }
-            else if(e.KeyChar == 'a')
+            else if(e.KeyChar == 'a' && canMoveLeft(shape))
             {
                 shape.accept(new Visitor.MoveLeft());
             } 
-            else if(e.KeyChar == 'r')
+            else if(e.KeyChar == 'r' && canRotate(shape))
             {
                 if(shape.getPos() == 12)
                 {
@@ -170,6 +193,42 @@ namespace TetrisDesignPatterns
                 }
 
             }
+        }
+
+        private bool canRotate(Shape shape)
+        {
+            foreach (Cell cell in shape.draw())
+            {
+                if (cell.X + 1 > 9 || cell.X - 1 < 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool canMoveRight(Shape shape)
+        {
+            foreach(Cell cell in shape.draw())
+            {
+                if (cell.X + 1 > 9)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool canMoveLeft(Shape shape)
+        {
+            foreach (Cell cell in shape.draw())
+            {
+                if (cell.X - 1 < 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

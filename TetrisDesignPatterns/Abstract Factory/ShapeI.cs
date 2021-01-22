@@ -99,7 +99,7 @@ namespace TetrisDesignPatterns.Abstract_Factory
 
         public void accept(RotateAt3 RotateAt3)
         {
-            throw new NotImplementedException();
+            RotateAt3.visit(this);
         }
 
         public void setPos(int pos)
@@ -114,17 +114,17 @@ namespace TetrisDesignPatterns.Abstract_Factory
 
         public void accept(RotateAt6 RotateAt6)
         {
-            throw new NotImplementedException();
+            RotateAt6.visit(this);
         }
 
         public void accept(RotateAt9 RotateAt9)
         {
-            throw new NotImplementedException();
+            RotateAt9.visit(this);
         }
 
         public void accept(RotateAt12 RotateAt12)
         {
-            throw new NotImplementedException();
+            RotateAt12.visit(this);
         }
     }
 }

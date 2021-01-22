@@ -36,6 +36,7 @@ namespace TetrisDesignPatterns
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonEnd = new System.Windows.Forms.Button();
             this.labelState = new System.Windows.Forms.Label();
+            this.labelScore = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@ namespace TetrisDesignPatterns
             // 
             // timerAni
             // 
-            this.timerAni.Interval = 1000;
+            this.timerAni.Interval = 200;
             this.timerAni.Tick += new System.EventHandler(this.timerAni_Tick);
             // 
             // buttonStop
@@ -93,11 +94,21 @@ namespace TetrisDesignPatterns
             this.labelState.TabIndex = 4;
             this.labelState.Text = "Game State:";
             // 
+            // labelScore
+            // 
+            this.labelScore.AutoSize = true;
+            this.labelScore.Location = new System.Drawing.Point(355, 450);
+            this.labelScore.Name = "labelScore";
+            this.labelScore.Size = new System.Drawing.Size(41, 13);
+            this.labelScore.TabIndex = 6;
+            this.labelScore.Text = "Score: ";
+            // 
             // ShapeGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 633);
+            this.Controls.Add(this.labelScore);
             this.Controls.Add(this.labelState);
             this.Controls.Add(this.buttonEnd);
             this.Controls.Add(this.buttonStart);
@@ -120,6 +131,7 @@ namespace TetrisDesignPatterns
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonEnd;
         private System.Windows.Forms.Label labelState;
+        private System.Windows.Forms.Label labelScore;
     }
 }
 
