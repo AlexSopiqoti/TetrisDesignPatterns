@@ -12,5 +12,7 @@ namespace TetrisDesignPatterns.Visitor
         void visit(ShapeL lShape);
         void visit(ShapeT tShape);
         void visit(ShapeO sShape);
+        void visit(ShapeZ zShape);
+        void visit(ShapeI iShape);
     }
 }

@@ -76,6 +76,12 @@
     <Compile Include="State\GameState.cs" />
     <Compile Include="State\GameStopped.cs" />
     <Compile Include="Visitor\IMovement.cs" />
+    <Compile Include="Visitor\MoveLeft.cs" />
+    <Compile Include="Visitor\MoveRight.cs" />
+    <Compile Include="Visitor\RotateAt12.cs" />
+    <Compile Include="Visitor\RotateAt3.cs" />
+    <Compile Include="Visitor\RotateAt6.cs" />
+    <Compile Include="Visitor\RotateAt9.cs" />
     <EmbeddedResource Include="ShapeGame.resx">
       <DependentUpon>ShapeGame.cs</DependentUpon>
     </EmbeddedResource>

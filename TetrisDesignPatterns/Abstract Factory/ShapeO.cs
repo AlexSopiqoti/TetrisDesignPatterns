@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TetrisDesignPatterns.Visitor;
 
 namespace TetrisDesignPatterns.Abstract_Factory
 {
@@ -13,12 +14,14 @@ namespace TetrisDesignPatterns.Abstract_Factory
         public Brush ShapeColor;
         public Cell lowestCell;
         public Cell highestCell;
+        public int RotationPos;
 
         public ShapeO()
         {
             FillShape();
             findLowestCell();
             findHighestCell();
+            RotationPos = 12;
             ShapeColor = Brushes.Red;
         }
 
@@ -83,6 +86,46 @@ namespace TetrisDesignPatterns.Abstract_Factory
         public Cell getHighestCell()
         {
             return highestCell;
+        }
+
+        public void accept(MoveLeft MoveLeft)
+        {
+            MoveLeft.visit(this);
+        }
+
+        public void accept(MoveRight MoveRight)
+        {
+            MoveRight.visit(this);
+        }
+
+        public void accept(RotateAt3 RotateAt3)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void setPos(int pos)
+        {
+            RotationPos = pos;
+        }
+
+        public int getPos()
+        {
+            return RotationPos;
+        }
+
+        public void accept(RotateAt6 RotateAt6)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void accept(RotateAt9 RotateAt9)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void accept(RotateAt12 RotateAt12)
+        {
+            throw new NotImplementedException();
         }
     }
 }

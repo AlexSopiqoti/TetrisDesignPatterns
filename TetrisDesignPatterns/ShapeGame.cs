@@ -25,7 +25,6 @@ namespace TetrisDesignPatterns
         Board board;        
         List<Shape> shapesInTheBottom;
 
-        //bool gameOver = false;
         Random rnd = new Random();
 
         public ShapeGame()
@@ -42,7 +41,7 @@ namespace TetrisDesignPatterns
         {            
             board = new Board();
             shapeFactory = FactoryProducer.getFactory();
-            shape = shapeFactory.getShape(rnd.Next(1, 6));
+            shape = shapeFactory.getShape(4);
             shapesInTheBottom = new List<Shape>();
             timerAni.Enabled = false;
             if (context.getState() == gameReset)
@@ -116,17 +115,7 @@ namespace TetrisDesignPatterns
                     }
                 }
             }
-
-
-
             pictureBox1.Invalidate();
-        }
-
-        
-
-        private void stopGame()
-        {
-            MessageBox.Show("You Failed");
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -151,9 +140,36 @@ namespace TetrisDesignPatterns
             initGame();
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void buttonStart_KeyPress(object sender, KeyPressEventArgs e)
         {
-            timerAni.Interval = trackBar1.Value;
+            if(e.KeyChar == 'd')
+            {
+                shape.accept(new Visitor.MoveRight());
+            }
+            else if(e.KeyChar == 'a')
+            {
+                shape.accept(new Visitor.MoveLeft());
+            } 
+            else if(e.KeyChar == 'r')
+            {
+                if(shape.getPos() == 12)
+                {
+                    shape.accept(new Visitor.RotateAt3());
+                }
+                else if(shape.getPos() == 3)
+                {
+                    shape.accept(new Visitor.RotateAt6());
+                }
+                else if (shape.getPos() == 6)
+                {
+                    shape.accept(new Visitor.RotateAt9());
+                }
+                else if (shape.getPos() == 9)
+                {
+                    shape.accept(new Visitor.RotateAt12());
+                }
+
+            }
         }
     }
 }

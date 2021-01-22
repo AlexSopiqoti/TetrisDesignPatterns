@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TetrisDesignPatterns.Visitor;
 
 namespace TetrisDesignPatterns.Abstract_Factory
 {
@@ -15,5 +16,13 @@ namespace TetrisDesignPatterns.Abstract_Factory
         Brush getColor();
         Cell getLowestCell();
         Cell getHighestCell();
+        void setPos(int pos);
+        int getPos();
+        void accept(MoveLeft MoveLeft);
+        void accept(MoveRight MoveRight);
+        void accept(RotateAt3 RotateAt3);
+        void accept(RotateAt6 RotateAt6);
+        void accept(RotateAt9 RotateAt9);
+        void accept(RotateAt12 RotateAt12);
     }
 }
