@@ -8,7 +8,7 @@ using TetrisDesignPatterns.Visitor;
 
 namespace TetrisDesignPatterns.Abstract_Factory
 {
-    public class ShapeT : Shape
+    public class ShapeT : IShape
     {
         List<Cell> temp = new List<Cell>();
         public Brush ShapeColor;

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TetrisDesignPatterns.State
 {
-    public class GameOver : GameState
+    public class GameOver : IGameState
     {
         public void doAction(Context context, Timer timer, Label label)
         {

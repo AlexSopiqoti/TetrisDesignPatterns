@@ -8,19 +8,19 @@ namespace TetrisDesignPatterns.State
 {
     public class Context
     {
-        private GameState state;
+        private IGameState state;
 
         public Context()
         {
             state = null;
         }
 
-        public void setState(GameState state)
+        public void setState(IGameState state)
         {
             this.state = state;
         }
 
-        public GameState getState()
+        public IGameState getState()
         {
             return state;
         }

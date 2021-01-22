@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TetrisDesignPatterns.Abstract_Factory
 {
-    public class ShapeFactory : AbstractFactory
-    {    
-        public override Shape getShape(int shapeType)
+    public class ShapeFactory : IAbstractFactory
+    {
+        public IShape getShape(int shapeType)
         {
             if (shapeType.Equals(1))
             {
@@ -31,8 +31,7 @@ namespace TetrisDesignPatterns.Abstract_Factory
                 return new ShapeZ();
             }
 
-
-            return null;
+            return null; 
         }
     }
 }

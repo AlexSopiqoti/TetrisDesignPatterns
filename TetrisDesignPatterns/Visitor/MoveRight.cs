@@ -34,7 +34,7 @@ namespace TetrisDesignPatterns.Visitor
             moveRight(iShape);
         }
 
-        public void moveRight(Shape shape)
+        public void moveRight(IShape shape)
         {
             foreach(Cell cell in shape.draw())
             {

@@ -50,10 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract Factory\AbstractFactory.cs" />
+    <Compile Include="Abstract Factory\IAbstractFactory.cs" />
     <Compile Include="Abstract Factory\FactoryProducer.cs" />
     <Compile Include="Abstract Factory\ShapeL.cs" />
-    <Compile Include="Abstract Factory\Shape.cs" />
+    <Compile Include="Abstract Factory\IShape.cs" />
     <Compile Include="Abstract Factory\ShapeFactory.cs" />
     <Compile Include="Abstract Factory\ShapeO.cs" />
     <Compile Include="Abstract Factory\ShapeT.cs" />
@@ -73,7 +73,7 @@
     <Compile Include="State\GameOver.cs" />
     <Compile Include="State\GameReset.cs" />
     <Compile Include="State\GameStarted.cs" />
-    <Compile Include="State\GameState.cs" />
+    <Compile Include="State\IGameState.cs" />
     <Compile Include="State\GameStopped.cs" />
     <Compile Include="Visitor\IMovement.cs" />
     <Compile Include="Visitor\MoveLeft.cs" />

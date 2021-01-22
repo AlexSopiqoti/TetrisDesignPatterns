@@ -8,7 +8,7 @@ using TetrisDesignPatterns.Visitor;
 
 namespace TetrisDesignPatterns.Abstract_Factory
 {
-    public class ShapeI : Shape
+    public class ShapeI : IShape
     {
         
         List<Cell> temp = new List<Cell>();

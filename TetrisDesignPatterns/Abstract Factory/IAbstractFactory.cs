@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TetrisDesignPatterns.Abstract_Factory
 {
-    public abstract class AbstractFactory
+    public interface IAbstractFactory
     {
-        public abstract Shape getShape(int shapeType);
+        IShape getShape(int shapeType);
     }
 }

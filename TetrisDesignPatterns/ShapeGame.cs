@@ -19,13 +19,13 @@ namespace TetrisDesignPatterns
         GameStopped gameStopped = new GameStopped();
         GameReset gameReset = new GameReset();
         GameOver gameOver = new GameOver();
-        AbstractFactory shapeFactory;
-        Shape shape;
+        IAbstractFactory shapeFactory;
+        IShape shape;
 
         int score = 0;
 
         Board board;        
-        List<Shape> shapesInTheBottom;
+        List<IShape> shapesInTheBottom;
 
         Random rnd = new Random();
 
@@ -44,7 +44,7 @@ namespace TetrisDesignPatterns
             board = new Board();
             shapeFactory = FactoryProducer.getFactory();
             shape = shapeFactory.getShape(rnd.Next(1,6));
-            shapesInTheBottom = new List<Shape>();
+            shapesInTheBottom = new List<IShape>();
             timerAni.Enabled = false;
             if (context.getState() == gameReset)
             {
@@ -70,7 +70,7 @@ namespace TetrisDesignPatterns
                             g.FillRectangle(shape.getColor(), shape.draw()[2].X * 30, shape.draw()[2].Y * 30, 30, 30);
                             g.FillRectangle(shape.getColor(), shape.draw()[3].X * 30, shape.draw()[3].Y * 30, 30, 30);
                         }
-                        foreach (Shape shape in shapesInTheBottom)
+                        foreach (IShape shape in shapesInTheBottom)
                         {
                             foreach (Cell cell in shape.draw())
                             {
@@ -108,7 +108,7 @@ namespace TetrisDesignPatterns
                     break;
                 }
             }
-            foreach(Shape tempShape in shapesInTheBottom)
+            foreach(IShape tempShape in shapesInTheBottom)
             {
                 foreach(Cell cell in tempShape.draw())
                 {
@@ -198,7 +198,7 @@ namespace TetrisDesignPatterns
             }
         }
 
-        private bool canRotate(Shape shape)
+        private bool canRotate(IShape shape)
         {
             foreach (Cell cell in shape.draw())
             {
@@ -210,7 +210,7 @@ namespace TetrisDesignPatterns
             return true;
         }
 
-        private bool canMoveRight(Shape shape)
+        private bool canMoveRight(IShape shape)
         {
             foreach(Cell cell in shape.draw())
             {
@@ -222,7 +222,7 @@ namespace TetrisDesignPatterns
             return true;
         }
 
-        private bool canMoveLeft(Shape shape)
+        private bool canMoveLeft(IShape shape)
         {
             foreach (Cell cell in shape.draw())
             {

@@ -8,7 +8,7 @@ namespace TetrisDesignPatterns.Abstract_Factory
 {
     public class FactoryProducer
     {
-        public static AbstractFactory getFactory()
+        public static IAbstractFactory getFactory()
         {
             return new ShapeFactory();
         }

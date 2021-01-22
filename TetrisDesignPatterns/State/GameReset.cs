@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TetrisDesignPatterns.State
 {
-    public class GameReset : GameState
+    public class GameReset : IGameState
     {
         public void doAction(Context context, Timer timer, Label label)
         {
