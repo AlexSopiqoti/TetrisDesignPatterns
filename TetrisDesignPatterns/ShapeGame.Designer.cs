@@ -51,7 +51,7 @@ namespace TetrisDesignPatterns
             // 
             // timerAni
             // 
-            this.timerAni.Interval = 200;
+            this.timerAni.Interval = 1000;
             this.timerAni.Tick += new System.EventHandler(this.timerAni_Tick);
             // 
             // buttonStop
@@ -88,7 +88,7 @@ namespace TetrisDesignPatterns
             // labelState
             // 
             this.labelState.AutoSize = true;
-            this.labelState.Location = new System.Drawing.Point(357, 260);
+            this.labelState.Location = new System.Drawing.Point(357, 268);
             this.labelState.Name = "labelState";
             this.labelState.Size = new System.Drawing.Size(66, 13);
             this.labelState.TabIndex = 4;
@@ -97,7 +97,7 @@ namespace TetrisDesignPatterns
             // labelScore
             // 
             this.labelScore.AutoSize = true;
-            this.labelScore.Location = new System.Drawing.Point(355, 450);
+            this.labelScore.Location = new System.Drawing.Point(357, 367);
             this.labelScore.Name = "labelScore";
             this.labelScore.Size = new System.Drawing.Size(41, 13);
             this.labelScore.TabIndex = 6;

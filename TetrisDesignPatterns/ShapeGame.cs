@@ -43,7 +43,7 @@ namespace TetrisDesignPatterns
         {            
             board = new Board();
             shapeFactory = FactoryProducer.getFactory();
-            shape = shapeFactory.getShape(3);
+            shape = shapeFactory.getShape(rnd.Next(1,6));
             shapesInTheBottom = new List<Shape>();
             timerAni.Enabled = false;
             if (context.getState() == gameReset)
@@ -86,11 +86,12 @@ namespace TetrisDesignPatterns
 
         private void timerAni_Tick(object sender, EventArgs e)
         {
+            checkForLines();
             shape.update();
             if (shape.getLowestCell().Y > 18) 
             {
                 shapesInTheBottom.Add(shape);
-                shape = shapeFactory.getShape(3);
+                shape = shapeFactory.getShape(rnd.Next(1, 6));
             }
             else if(board.board[shape.getLowestCell().X, shape.getLowestCell().Y + 1].type == Cell.CellType.Busy)
             {                
@@ -103,7 +104,7 @@ namespace TetrisDesignPatterns
                 if (board.board[cell.X, cell.Y + 1].type == Cell.CellType.Busy)
                 {
                     shapesInTheBottom.Add(shape);
-                    shape = shapeFactory.getShape(3);
+                    shape = shapeFactory.getShape(rnd.Next(1, 6));
                     break;
                 }
             }
@@ -118,19 +119,7 @@ namespace TetrisDesignPatterns
                 }
 
             }
-            int row = 9;   //check fourth row
-            bool isFilled = true;
-            for (var col = 0; col < 20; col++)
-            {
-                if (board.board[row, col].type != Cell.CellType.Busy)
-                {
-                    isFilled = false;
-                }
-            }
-            if (isFilled)
-            {
-                Console.WriteLine("WORKS");
-            }
+            
 
 
             pictureBox1.Invalidate();
@@ -138,7 +127,21 @@ namespace TetrisDesignPatterns
 
         public void checkForLines()
         {
-            
+            for (int i = 0; i < 10; i++)
+            {
+                bool hasLine = true;
+                for(int j = 0; j<20; j++)
+                {
+                    if(board.board[i,j].type != Cell.CellType.Busy)
+                    {
+                        hasLine = false;
+                    }
+                }
+                if (hasLine)
+                {
+                    score++;
+                }
+            }
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
